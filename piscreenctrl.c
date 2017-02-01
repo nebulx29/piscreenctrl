@@ -21,11 +21,11 @@
 #define SIGNAL  1
 #define DISPLAY_OFF 0
 #define DISPLAY_ON  1
-#define DEFAULT_TIMER_SEC 30
+#define DEFAULT_TIMER_SEC 180
 
 const char *CMDS[] = {
-		"/home/pi/bin/display_off.sh",
-		"/home/pi/bin/display_on.sh"
+		"/home/pi/bin/display-off.sh",
+		"/home/pi/bin/display-on.sh"
 	};
 
 // GLOBAL VARIABLES
