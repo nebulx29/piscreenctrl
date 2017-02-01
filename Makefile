@@ -1,5 +1,5 @@
 CC=gcc
-LIBS=-lm -lwiringPi
+LIBS=-lm -lwiringPi -lpthread
 CFLAGS=
 BINARY=piscreenctrl
 INSTALLPATH=/home/pi/bin
