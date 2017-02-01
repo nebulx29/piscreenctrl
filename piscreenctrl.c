@@ -15,7 +15,7 @@
 #define LOOP_DELAY 2000
 
 // CONSTANTS
-#define DEBUG   1
+#define DEBUG   0
 #define TIMESTAMP_LENGTH 27
 #define PIR_PIN 1
 #define SIGNAL  1
@@ -84,10 +84,16 @@ void *countdown(void *threadid) {
  }
  
  void display_off(void) {
+		createTimestamp(timestamp);
+		fprintf(stdout, "[%s] display_off()\n", timestamp);
+		fflush(stdout);
 		system(CMDS[DISPLAY_OFF]);
  }
 
  void display_on(void) {
+		createTimestamp(timestamp);
+		fprintf(stdout, "[%s] display_on()\n", timestamp);
+		fflush(stdout);
 		system(CMDS[DISPLAY_ON]);
  }
 
@@ -146,17 +152,15 @@ int main(int argc, char* argv[]) {
 	
 	while (1) {
 		delay(LOOP_DELAY);
-		fprintf(stdout, "%d ",timer);
-		fflush(stdout);
+		if (DEBUG) fprintf(stdout, "%d ",timer);
+		if (DEBUG) fflush(stdout);
 		
 		if (timer==0) {
-			//display_off();
-			printf("turning off display\n");
+			display_off();
 			while (!timer) {
 				delay(1000);
 			}
 			display_on();
-			printf("turning on display\n");
 		}
 	}
 	
